@@ -1,41 +1,44 @@
+
+
 server:
   error:
     include-message: always
     include-binding-errors: always
+  port: 2030
 
 
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2
   datasource:
-    password:
-    username: sa
-    url: jdbc:h2:mem:registrationdb
-    driver-class-name: org.h2.Driver
-
+    password: dba245bbd436315
+    url: jdbc:mysql://us-cdbr-east-03.cleardb.com/heroku_1628f5ca24d6750?reconnect=true
+    username: b4e0c5c29ea685
   jpa:
     hibernate:
       ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        format_sql: true
     show-sql: true
-    database-platform: org.hibernate.dialect.H2Dialect
 
   mail:
-    default-encoding: UTF-8
     host: localhost
     port: 1025
     username: hello
     password: hello
+
     properties:
       mail:
         smtp:
           ssl:
             trust: "*"
-
           auth: true
           starttls:
             enable: true
           connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+
+
 
 
