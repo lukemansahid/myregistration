@@ -37,16 +37,12 @@ public class AppUser  implements UserDetails {
                    String lastName,
                    String email,
                    String password,
-                   AppUserRole appUserRole,
-                   Boolean locked,
-                   Boolean enable) {
+                   AppUserRole appUserRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.appUserRole = appUserRole;
-        this.locked = locked;
-        this.enable = enable;
     }
 
     @Override
@@ -64,7 +60,14 @@ public class AppUser  implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
     }
 
     @Override

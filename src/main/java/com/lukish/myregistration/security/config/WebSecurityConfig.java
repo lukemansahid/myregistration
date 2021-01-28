@@ -27,7 +27,8 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests().antMatchers("/*", "/api/**").permitAll()
+                .authorizeRequests().antMatchers( "/api/**").permitAll()
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin();
@@ -42,12 +43,11 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
          auth.authenticationProvider(daoAuthenticationProvider());
     }
 
+    // this method returns the user for authentication process.
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(){
 
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-
-
 
         provider.setPasswordEncoder(bCryptPasswordEncoder);
         provider.setUserDetailsService(appUserService);

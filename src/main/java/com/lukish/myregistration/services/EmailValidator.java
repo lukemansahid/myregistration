@@ -1,4 +1,4 @@
-package com.lukish.myregistration.models;
+package com.lukish.myregistration.services;
 
 import org.springframework.stereotype.Service;
 
